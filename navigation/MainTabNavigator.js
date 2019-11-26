@@ -1,11 +1,11 @@
 import { createStackNavigator } from 'react-navigation';
 
 import HomeScreen from '../screens/HomeScreen';
-import App from '../App';
+import SplashScreen from '../screens/SplashScreen';
 
 const HomeStack = createStackNavigator(
   {
-    App,
+    SplashScreen,
     HomeScreen,
   }
 );

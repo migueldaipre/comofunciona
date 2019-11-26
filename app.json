@@ -4,7 +4,6 @@
     "slug": "comofunciona",
     "privacy": "public",
     "sdkVersion": "35.0.0",
-    "entryPoint": "../../screens/AppNavigator",
     "platforms": [
       "ios",
       "android",
