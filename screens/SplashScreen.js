@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import LottieView from "lottie-react-native";
 
-export default function SplashScreen() {
+export default function SplashScreen({ navigation }) {
     useEffect(() => {
       setInterval(() => {
-          this.props.navigation.navigate('HomeScreen');
+          navigation.navigate('HomeScreen');
       }, 2000);
     }, []);
 
