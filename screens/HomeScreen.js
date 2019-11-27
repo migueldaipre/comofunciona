@@ -39,24 +39,52 @@ const apps = [
         colorBackground: 'red',
       }
     ]
+  },
+  {
+    id: 3,
+    name: 'Whatsapp',
+    icon: 'whats.json',
+    languages: [
+      {
+        id: 1,
+        name: 'Java',
+        description: 'Descrição sobre o Java',
+        colorBackground: 'red',
+      }
+    ]
+  },
+  {
+    id: 4,
+    name: 'Whatsapp',
+    icon: 'whats.json',
+    languages: [
+      {
+        id: 1,
+        name: 'Java',
+        description: 'Descrição sobre o Java',
+        colorBackground: 'red',
+      }
+    ]
   }
 ]
 
 export default function HomeScreen() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  function renderApp(item, index) {
-    const isLastItem = index === apps.length - 1;
+  const scrollX = new Animated.Value(0)
 
+  function renderApp(item, index) {
     return (
       <View style={styles.appItem}>
         <TouchableOpacity
-          style={styles.shadow}
           activeOpacity={0.8}
           onPress={() => {}}
         >
             <Image
-              style={[styles.shadow, { borderRadius: 24 }]}
+              style={{
+                width: 100,
+                height: 100,
+              }}
               source={require('../assets/images/facebook.png')} />
             <View activeOpacity={0.8}>
               <Text style={styles.nameApp}>
@@ -68,31 +96,56 @@ export default function HomeScreen() {
     );
   }
 
+  function renderDots() {
+    const dotPosition = Animated.divide(scrollX, width);
+    return (
+      <View style={[styles.flex, styles.row, styles.containerDots]}>
+        {apps.map((item, index) => {
+          const borderWidth = dotPosition.interpolate({
+            inputRange: [index - 1, index, index + 1],
+            outputRange: [0, 2, 0],
+            extrapolate: 'clamp',
+          });
+          return (
+            <Animated.View
+              key={`step-${item.id}`}
+              style={[styles.dots, styles.activeDot, { borderWidth }]}
+            />
+          );
+        })}
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <View styles={styles.titleContainer}>
         <Text style={styles.como}>Como</Text>
         <Text style={styles.funciona}>Funciona ?</Text>
       </View>
-      <View styles={styles.contentContainer}>
-        <View styles={styles.leftContent}>
+      <View style={styles.contentContainer}>
+        <View style={styles.leftContent}>
           <TouchableOpacity onPress={() => setModalOpen(true)} style={styles.helpButton}>
             <Text style={styles.helpText}> ? </Text>
           </TouchableOpacity>
         </View>
-        <View styles={styles.rightContent}>
+        <View style={styles.rightContent}>
           <FlatList
             horizontal
             pagingEnabled
             scrollEnabled
             showsHorizontalScrollIndicator={false}
-            snapToAlignment="center"
             data={apps}
             keyExtractor={item => `${item.id}`}
-            onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: this.scrollX } } }])}
+            onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }])}
             renderItem={({ item, index }) => renderApp(item, index)}
           />
+          { renderDots() }
         </View>
+      </View>
+      <View style={styles.footerContent}>
+          <View style={styles.footerBorder}></View>
+          <Text style={styles.footerText}>Saiba mais sobre as linguagens de programação dos principais apps.</Text>
       </View>
 
       <Modal
@@ -123,6 +176,9 @@ const styles = StyleSheet.create({
   flex: {
     flex: 1,
   },
+  row: {
+    flexDirection: 'row',
+  },
   container: {
     flex: 1,
     backgroundColor: '#2B306E',
@@ -143,18 +199,21 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   contentContainer: {
+    flex: 1,
     flexDirection: 'row',
   },
   leftContent: {
-    flex: 1,
+    marginHorizontal: 20,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   rightContent: {
     flex: 1,
-    flexDirection: 'column'
+    paddingVertical: 10,
   },
   helpButton: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
     borderRadius: 24,
     backgroundColor: '#E84541',
     justifyContent: 'center',
@@ -166,15 +225,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   appItem: {
-    flex: 1,
     flexDirection: 'column',
-    width: (width / 2) - 20,
-    height: 200,
-    marginHorizontal: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 20 * 0.66,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: width / 2,
+    height: 250,
+    marginRight: 10,
     borderRadius: 24,
-    backgroundColor: '#FFF'
+    backgroundColor: '#FFF',
   },
   aboutTitle: {
     textAlign: 'center',
@@ -204,5 +262,43 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: 'bold',
     color: '#131239',
-  }
+  },
+  footerContent: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  footerBorder: {
+    width: width - 40,
+    height: 2,
+    backgroundColor: '#FCC826',
+  },
+  footerText: {
+    textAlign: 'center',
+    fontSize: 20,
+    color: '#FFF',
+    fontWeight: 'bold',
+    marginVertical: 20,
+  },
+  containerDots: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10 * 2,
+  },
+  dots: {
+    width: 4,
+    height: 4,
+    borderWidth: 1,
+    borderRadius: 2,
+    marginHorizontal: 2,
+    backgroundColor: '#eee',
+    borderColor: 'transparent',
+  },
+  activeDot: {
+    width: 12.5,
+    height: 12.5,
+    borderRadius: 6.25,
+    borderColor: '#E84541',
+  },
 });
