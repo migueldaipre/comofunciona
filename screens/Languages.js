@@ -22,7 +22,7 @@ const languages = [
     },
 ]
 
-export default function Languages() {
+export default function Languages({ navigation }) {
 
     const scrollX = new Animated.Value(0)
 
@@ -47,7 +47,7 @@ export default function Languages() {
               <TouchableOpacity
                 style={[styles.flex, styles.languageContainer]}
                 activeOpacity={0.8}
-                onPress={() => {}}
+                onPress={() => navigation.navigate('TechScreen')}
               >
                 <Image
                     style={{

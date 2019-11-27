@@ -29,8 +29,8 @@ const apps = [
   },
   {
     id: 2,
-    name: 'Whatsapp',
-    icon: 'whats.json',
+    name: 'Facebook',
+    icon:  require('../assets/images/facebook.png'),
     languages: [
       {
         id: 1,
@@ -40,32 +40,6 @@ const apps = [
       }
     ]
   },
-  {
-    id: 3,
-    name: 'Whatsapp',
-    icon: 'whats.json',
-    languages: [
-      {
-        id: 1,
-        name: 'Java',
-        description: 'Descrição sobre o Java',
-        colorBackground: 'red',
-      }
-    ]
-  },
-  {
-    id: 4,
-    name: 'Whatsapp',
-    icon: 'whats.json',
-    languages: [
-      {
-        id: 1,
-        name: 'Java',
-        description: 'Descrição sobre o Java',
-        colorBackground: 'red',
-      }
-    ]
-  }
 ]
 
 export default function HomeScreen({ navigation }) {
