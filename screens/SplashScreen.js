@@ -4,9 +4,9 @@ import LottieView from "lottie-react-native";
 
 export default function SplashScreen({ navigation }) {
     useEffect(() => {
-      setInterval(() => {
+      setTimeout(() => {
           navigation.navigate('HomeScreen');
-      }, 0);
+      }, 100);
     }, []);
 
     return (

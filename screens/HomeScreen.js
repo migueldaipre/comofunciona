@@ -246,10 +246,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     color: '#2D2D2D',
+    padding: 20,
   },
   modalButtonClose: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginVertical: 30,
   },
   shadow: {
     shadowColor: '#000',
