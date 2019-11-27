@@ -16,8 +16,8 @@ const { width } = Dimensions.get('window');
 const apps = [
   {
     id: 1,
-    name: 'Facebook',
-    icon: 'facebook.png',
+    name: 'Instagram',
+    icon: require('../assets/images/instagram.png'),
     languages: [
       {
         id: 1,
@@ -85,7 +85,7 @@ export default function HomeScreen({ navigation }) {
                 width: 100,
                 height: 100,
               }}
-              source={require('../assets/images/facebook.png')} />
+              source={item.icon} />
             <View activeOpacity={0.8}>
               <Text style={styles.nameApp}>
                 {item.name}

@@ -10,6 +10,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import LottieView from "lottie-react-native";
 
 const { width } = Dimensions.get('window');
 
@@ -19,16 +20,6 @@ const languages = [
         name: 'Javascript',
         icon: 'javascript.png',
     },
-    {
-        id: 2,
-        name: 'Java',
-        icon: 'java.png',
-    },
-    {
-        id: 3,
-        name: 'Swift',
-        icon: 'swift.png',
-    }
 ]
 
 export default function Languages() {
@@ -48,6 +39,11 @@ export default function Languages() {
                 isLastItem ? { marginRight: 10 } : null,
               ]}
             >
+               <LottieView
+                style={styles.animation}
+                autoPlay
+                source={require('../assets/animations/animacao_bola.json')}
+                />
               <TouchableOpacity
                 style={[styles.flex, styles.languageContainer]}
                 activeOpacity={0.8}
@@ -55,10 +51,10 @@ export default function Languages() {
               >
                 <Image
                     style={{
-                        width: 100,
-                        height: 100,
+                        width: 150,
+                        height: 150,
                     }}
-                    source={require('../assets/images/facebook.png')} />
+                    source={require('../assets/images/javascript.png')} />
                   <View activeOpacity={0.8} style={styles.column}>
                     <Text style={styles.name}>
                       {item.name}
@@ -89,7 +85,7 @@ export default function Languages() {
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
-                <Image style={styles.icon} source={require('../assets/images/facebook.png')} />
+                <Image style={styles.icon} source={require('../assets/images/instagram.png')} />
                 <View style={styles.titleContainer}>
                     <Text style={styles.title}>Instagram</Text>
                     <Text style={styles.description}>Tecnologias utilizadas</Text>
@@ -123,13 +119,20 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     paddingHorizontal: 20,
     borderRadius: 24,
-    backgroundColor: '#AF8A1E',
+    backgroundColor: '#FFD600',
     justifyContent: 'center',
     alignItems: 'center',
   },
+  animation: {
+    width: width,
+    height: 600,
+    zIndex: -5,
+    position: 'absolute',
+    top: 0,
+  },
   name: {
     fontWeight: 'bold',
-    color: '#FFF',
+    color: '#000',
     fontSize: 34,
   },
   container: {
