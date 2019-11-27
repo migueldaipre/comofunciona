@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   StyleSheet,
@@ -6,11 +5,13 @@ import {
   View,
 } from 'react-native';
 
-
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text>AAUUHAUHAUAHUAHAU FDPPP</Text>
+      <View styles={styles.titleContainer}>
+        <Text style={styles.como}>Como</Text>
+        <Text style={styles.funciona}>Funciona ?</Text>
+      </View>
     </View>
   );
 }
@@ -20,6 +21,20 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#2B306E',
+    padding: 20,
   },
+  titleContainer: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  como: {
+    fontSize: 22,
+    color: '#FFF'
+  },
+  funciona: {
+    fontSize: 32,
+    color: '#FFF',
+    fontWeight: 'bold'
+  }
 });

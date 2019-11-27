@@ -5,8 +5,19 @@ import SplashScreen from '../screens/SplashScreen';
 
 const HomeStack = createStackNavigator(
   {
-    SplashScreen,
-    HomeScreen,
+    SplashScreen: {
+      screen: SplashScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    HomeScreen: {
+      screen: HomeScreen,
+      navigationOptions: {
+        headerTransparent: true,
+        headerTintColor: '#FFF',
+      }
+    },
   }
 );
 
