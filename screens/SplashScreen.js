@@ -6,7 +6,7 @@ export default function SplashScreen({ navigation }) {
     useEffect(() => {
       setInterval(() => {
           navigation.navigate('HomeScreen');
-      }, 2000);
+      }, 0);
     }, []);
 
     return (
