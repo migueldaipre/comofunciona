@@ -2,6 +2,7 @@ import { createStackNavigator } from 'react-navigation';
 
 import HomeScreen from '../screens/HomeScreen';
 import SplashScreen from '../screens/SplashScreen';
+import Languages from '../screens/Languages';
 
 const HomeStack = createStackNavigator(
   {
@@ -14,10 +15,16 @@ const HomeStack = createStackNavigator(
     HomeScreen: {
       screen: HomeScreen,
       navigationOptions: {
+        header: null,
+      }
+    },
+    Languages: {
+      screen: Languages,
+      navigationOptions: {
         headerTransparent: true,
         headerTintColor: '#FFF',
       }
-    },
+    }
   }
 );
 

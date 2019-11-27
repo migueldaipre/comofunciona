@@ -68,7 +68,7 @@ const apps = [
   }
 ]
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
 
   const scrollX = new Animated.Value(0)
@@ -78,7 +78,7 @@ export default function HomeScreen() {
       <View style={styles.appItem}>
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={() => {}}
+          onPress={() => navigation.navigate('Languages')}
         >
             <Image
               style={{
@@ -134,6 +134,7 @@ export default function HomeScreen() {
             horizontal
             pagingEnabled
             scrollEnabled
+            snapToAlignment="center"
             showsHorizontalScrollIndicator={false}
             data={apps}
             keyExtractor={item => `${item.id}`}
@@ -229,8 +230,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: width / 2,
-    height: 250,
-    marginRight: 10,
+    height: 200,
+    marginVertical: 8,
+    marginHorizontal: 16,
     borderRadius: 24,
     backgroundColor: '#FFF',
   },
